@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-experience-hub
+  namespace: paklog-core
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: customer-experience-hub
+  template:
+    metadata:
+      labels:
+        app: customer-experience-hub
+    spec:
+      containers:
+      - name: customer-experience-hub
+        image: paklog/customer-experience-hub:latest
+        ports:
+        - containerPort: 8101
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "production"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-experience-hub
+  namespace: paklog-core
+spec:
+  selector:
+    app: customer-experience-hub
+  ports:
+  - port: 8101
+    targetPort: 8101
