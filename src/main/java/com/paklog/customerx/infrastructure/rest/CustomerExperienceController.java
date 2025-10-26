@@ -5,17 +5,19 @@ import com.paklog.customerx.application.service.CustomerExperienceService;
 import com.paklog.customerx.domain.aggregate.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/customer-experience")
-@RequiredArgsConstructor
 @Tag(name = "Customer Experience", description = "Customer engagement APIs")
 public class CustomerExperienceController {
     private final CustomerExperienceService service;
+    public CustomerExperienceController(CustomerExperienceService service) {
+        this.service = service;
+    }
+
 
     @PostMapping("/tickets")
     @Operation(summary = "Create support ticket")

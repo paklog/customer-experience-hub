@@ -6,6 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CustomerExperienceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CustomerExperienceApplication.java, args);
+        SpringApplication.run(CustomerExperienceApplication.class, args);
     }
 }
